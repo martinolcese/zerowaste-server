@@ -11,7 +11,7 @@ const app = express();
 // define a porta
 const port = process.env.port || 5000;
 // Armazena o valor de DB_HOST como uma variável
-const DB_HOST = process.env.DB_HOST || "mongodb://localhost:27017/padaria";
+const DB_HOST = process.env.DB_HOST || "mongodb://localhost:27017/bakery";
 // Conecta ao BD
 db.connect(DB_HOST);
 
