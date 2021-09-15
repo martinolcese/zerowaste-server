@@ -1,4 +1,4 @@
-const BAKERY = require('../model/PadariaModel');
+const BAKERY = require('../model/BakeryModel');
 
 exports.test = function (req, res) {
   res.send('Olá! Teste ao Controller');
@@ -24,10 +24,10 @@ exports.updateProduct = function (req, res, next) {
 };
 
 exports.update = function (req, res, next) {
-  IP.findByIdAndUpdate({ _id: req.params.id },
+  BAKERY.findByIdAndUpdate({ _id: req.params.id },
     req.body).then(function () {
-      IP.findOne({ _id: req.params.id }).then(function (ip) {
-        res.send(ip);
+      BAKERY.findOne({ _id: req.params.id }).then(function (product) {
+        res.send(product);
       });
     }).catch(next);
 };
