@@ -3,11 +3,9 @@ const router = express.Router();
 
 const controller = require('../controllers/APIController');
 
-router.get('/teste', controller.test);
-
 router.get('/products', controller.listProducts);
-router.post('/product', controller.addProduct);
-router.put('/product/:id', controller.updateProduct);
-router.delete('/product/:id', controller.deleteProduct);
+router.post('/products', controller.addProduct);
+router.put('/products/:id', controller.updateProduct);
+router.delete('/products/:id', controller.deleteProduct);
 
 module.exports = router;

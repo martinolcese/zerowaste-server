@@ -31,7 +31,8 @@ app.listen(port, () => {
 });
 
 app.get('/', function (req, res) {
-  res.send("End Point Inválido");
+  // res.send("End Point Inválido");
+  res.redirect(301, "https://amignon.gitbook.io/bakery-api/");
 });
 
 
