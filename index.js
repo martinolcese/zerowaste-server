@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var cors = require('cors')
 
 const routes = require('./routes/api');
 
@@ -18,6 +19,7 @@ db.connect(DB_HOST);
 // *** MIDDLEWARE
 app.use(bodyParser.json());
 app.use('/api', routes);
+app.use(cors());
 app.use(function (err, req, res, next) {
   console.log(err);
   // ‘res.status(422)’->muda o status
