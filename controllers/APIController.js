@@ -1,11 +1,9 @@
-const BAKERY = require('../model/BakeryModel');
-
-exports.test = function (req, res) {
-  res.send('Olá! Teste ao Controller');
-}
+const PRODUCTS = require('../model/ProductsModel');
+const ITEMS = require('../model/ItemsModel');
+const CARDS = require('../model/CardsModel');
 
 exports.addProduct = function (req, res, next) {
-  BAKERY.create(req.body)
+  PRODUCTS.create(req.body)
     .then((product) => {
       res.send(product);
     })
@@ -13,9 +11,9 @@ exports.addProduct = function (req, res, next) {
 };
 
 exports.updateProduct = function (req, res, next) {
-  BAKERY.findByIdAndUpdate({ _id: req.params.id }, req.body)
+  PRODUCTS.findByIdAndUpdate({ _id: req.params.id }, req.body)
     .then(() => {
-      BAKERY.findOne({ _id: req.params.id })
+      PRODUCTS.findOne({ _id: req.params.id })
         .then(product => {
           res.send(product);
         });
@@ -23,25 +21,68 @@ exports.updateProduct = function (req, res, next) {
     .catch(next);
 };
 
-exports.update = function (req, res, next) {
-  BAKERY.findByIdAndUpdate({ _id: req.params.id },
-    req.body).then(function () {
-      BAKERY.findOne({ _id: req.params.id }).then(function (product) {
-        res.send(product);
-      });
-    }).catch(next);
-};
-
 exports.deleteProduct = function (req, res, next) {
-  BAKERY.findByIdAndRemove({ _id: req.params.id })
+  PRODUCTS.findByIdAndRemove({ _id: req.params.id })
     .then((product) => res.send(product))
     .catch(next);
 };
 
 exports.listProducts = function (req, res, next) {
-  BAKERY.find()
+  PRODUCTS.find()
     .then(products => {
       res.send(products);
     })
     .catch(next);
 }
+
+exports.listItems = function (req, res, next) {
+  ITEMS.find()
+    .then(items => {
+      res.send(items);
+    })
+    .catch(next);
+}
+
+exports.createItem = function (req, res, next) {
+  ITEMS.create(req.body)
+    .then((items) => {
+      res.send(items);
+    })
+    .catch(next);
+};
+
+exports.createCard = function (req, res, next) {
+  CARDS.create(req.body)
+    .then((card) => {
+      res.send(card);
+    })
+    .catch(next);
+};
+
+exports.updateCard = function (req, res, next) {
+  CARDS.findOneAndUpdate({ number: req.params.number }, req.body)
+    .then(() => {
+      CARDS.findOne({ number: req.params.number })
+        .then(card => {
+          res.send(card);
+        });
+    })
+    .catch(next);
+};
+
+exports.listCards = function (req, res, next) {
+  CARDS.find()
+    .then(cards => {
+      res.send(cards);
+    })
+    .catch(next);
+}
+
+exports.getCard = function (req, res, next) {
+  CARDS.find({ number: req.params.number })
+    .populate("items.product")
+    .then((card) => {
+      res.send(card[0]);
+    })
+    .catch(next);
+};
