@@ -8,10 +8,10 @@ router.post('/products', controller.addProduct);
 router.put('/products/:id', controller.updateProduct);
 router.delete('/products/:id', controller.deleteProduct);
 
-router.get('/boxes', controller.listProducts);
-router.post('/boxes', controller.addProduct);
-router.put('/boxes/:id', controller.updateProduct);
-router.delete('/boxes/:id', controller.deleteProduct);
+router.get('/boxes', controller.listBoxes);
+router.post('/boxes', controller.addBox);
+router.put('/boxes/:id', controller.updateBox);
+router.delete('/boxes/:id', controller.deleteBox);
 
 
 /*router.get('/cards', controller.listCards);
