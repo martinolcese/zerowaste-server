@@ -1,6 +1,7 @@
 const PRODUCTS = require('../model/ProductsModel');
 const ITEMS = require('../model/ItemsModel');
 const CARDS = require('../model/CardsModel');
+const BOXES = require('../model/BoxesModel');
 
 exports.addProduct = function (req, res, next) {
   PRODUCTS.create(req.body)
@@ -31,6 +32,39 @@ exports.listProducts = function (req, res, next) {
   PRODUCTS.find()
     .then(products => {
       res.send(products);
+    })
+    .catch(next);
+}
+
+exports.addBox = function (req, res, next) {
+  BOXES.create(req.body)
+    .then((box) => {
+      res.send(box);
+    })
+    .catch(next);
+};
+
+exports.updateBox = function (req, res, next) {
+  BOXES.findByIdAndUpdate({ _id: req.params.id }, req.body)
+    .then(() => {
+      BOXES.findOne({ _id: req.params.id })
+        .then(box => {
+          res.send(box);
+        });
+    })
+    .catch(next);
+};
+
+exports.deleteBox = function (req, res, next) {
+  BOXES.findByIdAndRemove({ _id: req.params.id })
+    .then((box) => res.send(box))
+    .catch(next);
+};
+
+exports.listBoxes = function (req, res, next) {
+  BOXES.find()
+    .then(boxes => {
+      res.send(boxes);
     })
     .catch(next);
 }
