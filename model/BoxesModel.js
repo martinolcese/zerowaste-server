@@ -16,7 +16,7 @@ const BoxesSchema = new Schema({
     required: false,
   },
   location: [{
-    neighboorhood:{
+    neighbourhood:{
         type: String,
         required: true,
   },
