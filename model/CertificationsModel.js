@@ -42,6 +42,10 @@ const CertificationsSchema = new Schema({
   qtyApt: {
     type: Number,
     default: 0,
+  },
+  status: {
+    type: String,
+    default: "pendente",
   }}, 
   {
     timestamps: true,
