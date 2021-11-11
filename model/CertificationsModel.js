@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const BoxesSchema = new Schema({
+const CertificationsSchema = new Schema({
   code: {
     type: String,
     required: true,
@@ -11,11 +11,11 @@ const BoxesSchema = new Schema({
     type: String,
     required: true,
   },
-  description: {
+  cnpj: {
     type: String,
     required: false,
   },
-  neighbourhood: {
+  address: {
     type: String,
     required: true,
   },
@@ -23,23 +23,30 @@ const BoxesSchema = new Schema({
     type: String,
     required: true,
   },
-  state: {
-    type: String,
-    required: true,
-  },
   cep: {
     type: String,
     required: true,
   },
-  country: {
+  managerName: {
     type: String,
     required: true,
   },
-}, 
+  email: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: String,
+    required: true,
+  },
+  qtyApt: {
+    type: Number,
+    default: 0,
+  }}, 
   {
     timestamps: true,
   }
 );
 
-const Boxes = mongoose.model('Boxes', BoxesSchema);
-module.exports = Boxes;
+const Certifications = mongoose.model('Certifications', CertificationsSchema);
+module.exports = Certifications;

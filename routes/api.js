@@ -8,15 +8,15 @@ router.post('/products', controller.addProduct);
 router.put('/products/:id', controller.updateProduct);
 router.delete('/products/:id', controller.deleteProduct);
 
-router.get('/boxes', controller.listBoxes);
-router.post('/boxes', controller.addBox);
-router.put('/boxes/:id', controller.updateBox);
-router.delete('/boxes/:id', controller.deleteBox);
+router.get('/certifications', controller.listCertifications);
+router.post('/certifications', controller.addCertification);
+router.put('/certifications/:id', controller.updateCertification);
+router.delete('/certifications/:id', controller.deleteCertification);
+
+router.get('/tips', controller.listTips);
+router.post('/tips', controller.addTip);
+router.put('/tips/:id', controller.updateTip);
+router.delete('/tips/:id', controller.deleteTip);
 
 
-/*router.get('/cards', controller.listCards);
-router.get('/cards/:number', controller.getCard);
-router.post('/cards', controller.createCard);
-router.put('/cards/:number', controller.updateCard);
-*/
 module.exports = router;

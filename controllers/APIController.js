@@ -1,8 +1,8 @@
 const PRODUCTS = require('../model/ProductsModel');
-const ITEMS = require('../model/ItemsModel');
-const CARDS = require('../model/CardsModel');
-const BOXES = require('../model/BoxesModel');
+const CERTIFICATIONS = require('../model/CertificationsModel');
+const TIPS = require('../model/TipsModel');
 
+//PRODUCTS 
 exports.addProduct = function (req, res, next) {
   PRODUCTS.create(req.body)
     .then((product) => {
@@ -36,87 +36,70 @@ exports.listProducts = function (req, res, next) {
     .catch(next);
 }
 
-exports.addBox = function (req, res, next) {
-  BOXES.create(req.body)
-    .then((box) => {
-      res.send(box);
+//CERTIFICATIONS 
+exports.addCertification = function (req, res, next) {
+  CERTIFICATIONS.create(req.body)
+    .then((certification) => {
+      res.send(certification);
     })
     .catch(next);
 };
 
-exports.updateBox = function (req, res, next) {
-  BOXES.findByIdAndUpdate({ _id: req.params.id }, req.body)
+exports.updateCertification = function (req, res, next) {
+  CERTIFICATIONS.findByIdAndUpdate({ _id: req.params.id }, req.body)
     .then(() => {
-      BOXES.findOne({ _id: req.params.id })
-        .then(box => {
-          res.send(box);
+      CERTIFICATIONS.findOne({ _id: req.params.id })
+        .then(certification => {
+          res.send(certification);
         });
     })
     .catch(next);
 };
 
-exports.deleteBox = function (req, res, next) {
-  BOXES.findByIdAndRemove({ _id: req.params.id })
-    .then((box) => res.send(box))
+exports.deleteCertification = function (req, res, next) {
+  CERTIFICATIONS.findByIdAndRemove({ _id: req.params.id })
+    .then((certification) => res.send(certification))
     .catch(next);
 };
 
-exports.listBoxes = function (req, res, next) {
-  BOXES.find()
-    .then(boxes => {
-      res.send(boxes);
+exports.listCertifications = function (req, res, next) {
+  CERTIFICATIONS.find()
+    .then(certifications => {
+      res.send(certifications);
     })
     .catch(next);
 }
 
-exports.listItems = function (req, res, next) {
-  ITEMS.find()
-    .then(items => {
-      res.send(items);
-    })
-    .catch(next);
-}
-
-exports.createItem = function (req, res, next) {
-  ITEMS.create(req.body)
-    .then((items) => {
-      res.send(items);
+//TIPS 
+exports.addTip = function (req, res, next) {
+  TIPS.create(req.body)
+    .then((tip) => {
+      res.send(tip);
     })
     .catch(next);
 };
 
-exports.createCard = function (req, res, next) {
-  CARDS.create(req.body)
-    .then((card) => {
-      res.send(card);
-    })
-    .catch(next);
-};
-
-exports.updateCard = function (req, res, next) {
-  CARDS.findOneAndUpdate({ number: req.params.number }, req.body)
+exports.updateTip = function (req, res, next) {
+  TIPS.findByIdAndUpdate({ _id: req.params.id }, req.body)
     .then(() => {
-      CARDS.findOne({ number: req.params.number })
-        .then(card => {
-          res.send(card);
+      TIPS.findOne({ _id: req.params.id })
+        .then(tip => {
+          res.send(tip);
         });
     })
     .catch(next);
 };
 
-exports.listCards = function (req, res, next) {
-  CARDS.find()
-    .then(cards => {
-      res.send(cards);
+exports.deleteTip = function (req, res, next) {
+  TIPS.findByIdAndRemove({ _id: req.params.id })
+    .then((tip) => res.send(tip))
+    .catch(next);
+};
+
+exports.listTips = function (req, res, next) {
+  TIPS.find()
+    .then(tips => {
+      res.send(tips);
     })
     .catch(next);
 }
-
-exports.getCard = function (req, res, next) {
-  CARDS.find({ number: req.params.number })
-    .populate("items.product")
-    .then((card) => {
-      res.send(card[0]);
-    })
-    .catch(next);
-};
