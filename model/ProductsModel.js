@@ -2,19 +2,67 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ProductsSchema = new Schema({
-  code: {
-    type: String,
-    required: true,
-    index: { unique: true }
-  },
-  description: {
+  name: {
     type: String,
     required: true,
   },
-  value: {
-    type: Number,
-    default: 0,
-  }}, 
+  type: {
+    type: String,
+    required: true,
+  },
+  img: {
+    type: String,
+    required: true,
+  },
+  recipe: {
+    type: String,
+    required: true,
+  },
+  info_chart: {
+    type: String,
+    required: true,
+  },
+  season: {
+    option1: {
+      fruit_type: {
+        type: String,
+        required: true,
+      },
+      period: {
+        type: String,
+        required: true,
+      },
+    },
+    option2: {
+      fruit_type: {
+        type: String,
+        required: true,
+      },
+      period: {
+        type: String,
+        required: true,
+      },
+    },
+  },
+  misc: {
+    item1: {
+      type: String,
+      required: true,
+    },
+    item2: {
+      type: String,
+      required: false,
+    },
+    item3: {
+      type: String,
+      required: false,
+    },
+  },
+
+
+
+
+},
   {
     timestamps: true,
   }
