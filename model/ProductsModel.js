@@ -18,6 +18,10 @@ const ProductsSchema = new Schema({
     type: String,
     required: true,
   },
+  tip:{
+    type: String,
+    required: true,
+  },
   info_chart: {
     type: String,
     required: true,
