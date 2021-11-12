@@ -46,6 +46,7 @@ const ProductsSchema = new Schema({
         type: String,
         required: true,
       },
+      required: false,
     },
   },
   misc: {
