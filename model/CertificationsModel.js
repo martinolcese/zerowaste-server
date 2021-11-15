@@ -44,7 +44,7 @@ const CertificationsSchema = new Schema({
     required: true,
   },
   qtyApts: {
-    type: Number,
+    type: String,
     default: 0,
   },
   status: {
