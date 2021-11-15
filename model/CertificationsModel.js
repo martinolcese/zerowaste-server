@@ -2,22 +2,22 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const CertificationsSchema = new Schema({
-  code: {
-    type: String,
-    required: true,
-    index: { unique: true }
-  },
   name: {
     type: String,
     required: true,
   },
   cnpj: {
     type: String,
-    required: false,
+    required: true,
+    index: { unique: true }
   },
   address: {
     type: String,
     required: true,
+  },
+  addressNumber: {
+    type: String,
+    required: false,
   },
   city: {
     type: String,
@@ -27,7 +27,11 @@ const CertificationsSchema = new Schema({
     type: String,
     required: true,
   },
-  managerName: {
+  uf: {
+    type: String,
+    required: true,
+  },
+  nameResponsible: {
     type: String,
     required: true,
   },
@@ -39,7 +43,7 @@ const CertificationsSchema = new Schema({
     type: String,
     required: true,
   },
-  qtyApt: {
+  qtyApts: {
     type: Number,
     default: 0,
   },
