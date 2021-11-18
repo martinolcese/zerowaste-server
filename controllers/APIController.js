@@ -1,6 +1,8 @@
 const PRODUCTS = require('../model/ProductsModel');
 const CERTIFICATIONS = require('../model/CertificationsModel');
 const TIPS = require('../model/TipsModel');
+const EMPRESAS = require('../model/EmpresasModel');
+const EVENTOS = require('../model/EventosModel');
 
 //PRODUCTS 
 exports.addProduct = function (req, res, next) {
@@ -100,6 +102,24 @@ exports.listTips = function (req, res, next) {
   TIPS.find()
     .then(tips => {
       res.send(tips);
+    })
+    .catch(next);
+}
+
+//EMPRESAS
+exports.listEmpresas = function (req, res, next) {
+  EMPRESAS.find()
+    .then(empresas => {
+      res.send(empresas);
+    })
+    .catch(next);
+}
+
+//EVENTOS
+exports.listEventos = function (req, res, next) {
+  EVENTOS.find()
+    .then(eventos => {
+      res.send(eventos);
     })
     .catch(next);
 }
