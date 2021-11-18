@@ -18,5 +18,9 @@ router.post('/tips', controller.addTip);
 router.put('/tips/:id', controller.updateTip);
 router.delete('/tips/:id', controller.deleteTip);
 
+router.get('/empresas', controller.listEmpresas);
+
+router.get('/eventos', controller.listEventos);
+
 
 module.exports = router;
